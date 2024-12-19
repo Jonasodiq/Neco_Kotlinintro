@@ -1,6 +1,8 @@
 package com.example.kotlinintro
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,28 +19,19 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
     }
 
+    fun onClickTest(view : View) {
 
-    override fun onStart() {
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
+        val tvText = findViewById<TextView>(R.id.tv_text)
+        tvText.text = "Alhamdu lillah"
     }
 }
 
 /*
-* Linl https://www.youtube.com/watch?v=foTZ4rzCFKc
+* Linl https://www.youtube.com/watch?v=69mObaqD7OI
+*
 * The activity lifecycle -> https://developer.android.com/guide/components/activities/activity-lifecycle?hl=ru
 *
 *
