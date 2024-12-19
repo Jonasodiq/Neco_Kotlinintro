@@ -1,6 +1,8 @@
 package com.example.kotlinintro
 
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,8 +12,7 @@ import com.example.kotlinintro.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     lateinit var bindingClass : ActivityMainBinding
-    val a = 324
-    val b = 34
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,37 +22,38 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(bindingClass.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        bindingClass.btnAdd.setOnClickListener {
+
+            val resultValue = bindingClass.editValue.text.toString().toInt()
+            Log.d("!!!", "Result = $resultValue")
+            when(resultValue) {
+                in 0..1000 -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    bindingClass.tvResult.text = "You are a beginner blogger"
+                }
+                in 1001..10000 -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    bindingClass.tvResult.text = "You are an average blogger"
+                }
+                in 10000..100000 -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    bindingClass.tvResult.text = "You are an super blogger"
+                }
+
+                else -> {
+                    bindingClass.tvResult.visibility = View.VISIBLE
+                    bindingClass.tvResult.text = "You are a superstar blogger!!!"
+                }
+            }
+
         }
 
-        bindingClass.btnAdd.setOnClickListener {
-            val  result = a + b
-            bindingClass.tvText.text = "Alhamdu lillah"
-            bindingClass.tvNum.text = "Result: $result."
-        }
-        bindingClass.btnSub.setOnClickListener {
-            val  result = a - b
-            bindingClass.tvText.text = "Alhamdu lillah"
-            bindingClass.tvNum.text = "Result: $result."
-        }
-        bindingClass.btnMult.setOnClickListener {
-            val  result = a * b
-            bindingClass.tvText.text = "Alhamdu lillah"
-            bindingClass.tvNum.text = "Result: $result."
-        }
-        bindingClass.btnDiv.setOnClickListener {
-            val  result = a / b
-            bindingClass.tvText.text = "Alhamdu lillah"
-            bindingClass.tvNum.text = "Result: $result."
-        }
+
     }
 }
 
 /*
-* Link -> https://developer.android.com/topic/libraries/view-binding
+* Link -> https://www.youtube.com/watch?v=YJSidfZBAAk
 * buildFeatures {
        	 viewBinding = true
 * }
