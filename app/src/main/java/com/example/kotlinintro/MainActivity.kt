@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
 
             val resultValue = bindingClass.editValue.text.toString()
             Log.d("!!!", "Result = $resultValue")
+            bindingClass.imageView.visibility = View.VISIBLE
+            Log.d("!!!", "ID img-man = ${R.drawable.man}")
 
             when(resultValue) {
                 Constance.TEACHER -> {
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                     val tempText = "Your salary is ${Constance.TEACHER_SALARY} kr"
                     if (bindingClass.editKey.text.toString() == Constance.TEACHER_KEY) {
                         bindingClass.tvResult.text = tempText
+                        bindingClass.imageView.setImageResource(R.drawable.woman)
                     } else {
                         bindingClass.tvResult.text = "Incorrect"
                     }
@@ -41,6 +44,7 @@ class MainActivity : AppCompatActivity() {
                     val tempText = "Your salary is ${Constance.ACCOUNTANT_SALARY} kr"
                     if (bindingClass.editKey.text.toString() == Constance.ACCOUNTANT_KEY) {
                         bindingClass.tvResult.text = tempText
+                        bindingClass.imageView.setImageResource(R.drawable.job)
                     } else {
                         bindingClass.tvResult.text = "Incorrect"
                     }
@@ -50,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                     val tempText = "Your salary is ${Constance.DEVELOPER_SALARY} kr"
                     if (bindingClass.editKey.text.toString() == Constance.DEVELOPER_KEY) {
                         bindingClass.tvResult.text = tempText
+                        bindingClass.imageView.setImageResource(R.drawable.developer)
                     } else {
                         bindingClass.tvResult.text = "Incorrect"
                     }
