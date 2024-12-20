@@ -11,11 +11,12 @@
         android:id="@+id/tvText"
         android:layout_width="178dp"
         android:layout_height="38dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:gravity="center"
         android:text="Bismillah!"
-        android:textSize="34sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +34,7 @@
         android:id="@+id/editValue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Your name"
         android:textSize="24sp"
@@ -67,5 +68,16 @@
         app:layout_constraintEnd_toEndOf="@+id/editValue"
         app:layout_constraintStart_toStartOf="@+id/editValue"
         app:layout_constraintTop_toBottomOf="@+id/editValue" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/tvText"
+        app:layout_constraintStart_toStartOf="@+id/tvText"
+        app:layout_constraintTop_toBottomOf="@+id/tvText"
+        app:srcCompat="@drawable/man" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
