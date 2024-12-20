@@ -5,8 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.kotlinintro.constance.Constance
 import com.example.kotlinintro.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,31 +23,45 @@ class MainActivity : AppCompatActivity() {
 
         bindingClass.btnAdd.setOnClickListener {
 
-            val resultValue = bindingClass.editValue.text.toString().toInt()
+            val resultValue = bindingClass.editValue.text.toString()
             Log.d("!!!", "Result = $resultValue")
+
             when(resultValue) {
-                in 0..1000 -> {
+                Constance.TEACHER -> {
                     bindingClass.tvResult.visibility = View.VISIBLE
-                    bindingClass.tvResult.text = "You are a beginner blogger"
+                    val tempText = "Your salary is ${Constance.TEACHER_SALARY} kr"
+                    if (bindingClass.editKey.text.toString() == Constance.TEACHER_KEY) {
+                        bindingClass.tvResult.text = tempText
+                    } else {
+                        bindingClass.tvResult.text = "Incorrect"
+                    }
                 }
-                in 1001..10000 -> {
+                Constance.ACCOUNTANT -> {
                     bindingClass.tvResult.visibility = View.VISIBLE
-                    bindingClass.tvResult.text = "You are an average blogger"
+                    val tempText = "Your salary is ${Constance.ACCOUNTANT_SALARY} kr"
+                    if (bindingClass.editKey.text.toString() == Constance.ACCOUNTANT_KEY) {
+                        bindingClass.tvResult.text = tempText
+                    } else {
+                        bindingClass.tvResult.text = "Incorrect"
+                    }
                 }
-                in 10000..100000 -> {
+                Constance.DEVELOPER -> {
                     bindingClass.tvResult.visibility = View.VISIBLE
-                    bindingClass.tvResult.text = "You are an super blogger"
+                    val tempText = "Your salary is ${Constance.DEVELOPER_SALARY} kr"
+                    if (bindingClass.editKey.text.toString() == Constance.DEVELOPER_KEY) {
+                        bindingClass.tvResult.text = tempText
+                    } else {
+                        bindingClass.tvResult.text = "Incorrect"
+                    }
                 }
 
                 else -> {
                     bindingClass.tvResult.visibility = View.VISIBLE
-                    bindingClass.tvResult.text = "You are a superstar blogger!!!"
+                    bindingClass.tvResult.text = "Can't be empty"
                 }
             }
 
         }
-
-
     }
 }
 
