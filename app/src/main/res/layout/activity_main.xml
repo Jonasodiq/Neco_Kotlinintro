@@ -9,46 +9,38 @@
 
     <TextView
         android:id="@+id/tvText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="38dp"
         android:layout_marginTop="200dp"
+        android:gravity="center"
         android:text="Bismillah!"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Enter your subscribers"
-        app:layout_constraintEnd_toEndOf="@+id/tvText"
-        app:layout_constraintStart_toStartOf="@+id/tvText"
-        app:layout_constraintTop_toBottomOf="@+id/tvText" />
-
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="147dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="24dp"
         android:text="Add"
-        app:layout_constraintEnd_toEndOf="@+id/editValue"
-        app:layout_constraintStart_toStartOf="@+id/editValue"
-        app:layout_constraintTop_toBottomOf="@+id/editValue" />
+        app:layout_constraintEnd_toEndOf="@+id/tvResult"
+        app:layout_constraintStart_toStartOf="@+id/tvResult"
+        app:layout_constraintTop_toBottomOf="@+id/tvResult" />
 
     <EditText
         android:id="@+id/editValue"
-        android:layout_width="141dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:hint="Add number"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/tvNum"
-        app:layout_constraintStart_toStartOf="@+id/tvNum"
-        app:layout_constraintTop_toBottomOf="@+id/tvNum" />
+        android:hint="Your name"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvText"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="@+id/tvText"
+        app:layout_constraintTop_toBottomOf="@+id/tvText" />
 
     <TextView
         android:id="@+id/tvResult"
@@ -57,9 +49,21 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="TextView"
-        android:textColor="@color/design_default_color_secondary"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/editKey"
+        app:layout_constraintStart_toStartOf="@+id/editKey"
+        app:layout_constraintTop_toBottomOf="@+id/editKey" />
+
+    <EditText
+        android:id="@+id/editKey"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="number|numberPassword"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/editValue"
         app:layout_constraintStart_toStartOf="@+id/editValue"
         app:layout_constraintTop_toBottomOf="@+id/editValue" />
