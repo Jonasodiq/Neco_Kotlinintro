@@ -1,51 +1,44 @@
 package com.example.kotlinintro
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import com.example.kotlinintro.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var bindingClass : ActivityMainBinding
-
+    lateinit var bindingClass : ActivityMainBinding // binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        bindingClass = ActivityMainBinding.inflate(layoutInflater)
+        bindingClass = ActivityMainBinding.inflate(layoutInflater) // binding inflate
 
-        enableEdgeToEdge()
         setContentView(bindingClass.root)
 
-    }
+        bindingClass.sendButton.setOnClickListener {
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == 100 && resultCode == RESULT_OK && data != null) {
-            val returnedData = data.getStringExtra("key")
-            bindingClass.tvMessageMain.text = returnedData
-            Log.d("!!!", "returnedData: $returnedData")
+            val inputText = bindingClass.inputEditText.text.toString()
+            if (inputText.isNotEmpty()) {
+                // Skapa en Intent för att starta SecondActivity
+                val intent = Intent(this, SecondActivity::class.java)
+                intent.putExtra("input_data", inputText)
+                startActivityForResult(intent, 1) // Starta SecondActivity med förväntan på resultat
+            } else {
+                Toast.makeText(this, "Vänligen skriv något!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-    fun onClickTest1(view: View) {
-        val i = Intent(this, TestActivity1::class.java)
-        i.putExtra("key", "What is your name?")
-        //startActivity(i)
-        startActivityForResult(i, 100)
+    // Hantera resultat från SecondActivity
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            val returnedData = data?.getStringExtra("returned_data")
+            bindingClass.textView.text = "från SecondActivity: $returnedData"
+            Toast.makeText(this, "Mottaget från SecondActivity: $returnedData", Toast.LENGTH_LONG).show()
+        }
     }
-
-
 }
-
-/*
-* Link -> https://www.youtube.com/watch?v=kDUIlwkpBaQ
-* Link -> https://developer.android.com/guide/topics/resources/providing-resources?hl=ru
-* buildFeatures {
-       	 viewBinding = true
-* }
-* */
