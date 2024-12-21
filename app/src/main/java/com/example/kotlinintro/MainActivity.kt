@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.kotlinintro.constance.Constance
 import com.example.kotlinintro.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,14 +23,23 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun onClickTest2(view: View) {
-        val intent = Intent(this, TestActivity2::class.java)
-        startActivity(intent)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == 100 && resultCode == RESULT_OK && data != null) {
+            val returnedData = data.getStringExtra("key")
+            bindingClass.tvMessageMain.text = returnedData
+            Log.d("!!!", "returnedData: $returnedData")
+        }
     }
 
-    fun onClockBack(view: View) {
-        finish()
+    fun onClickTest1(view: View) {
+        val i = Intent(this, TestActivity1::class.java)
+        i.putExtra("key", "What is your name?")
+        //startActivity(i)
+        startActivityForResult(i, 100)
     }
+
+
 }
 
 /*
