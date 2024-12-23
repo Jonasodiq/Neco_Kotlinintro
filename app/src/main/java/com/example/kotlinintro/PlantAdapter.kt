@@ -10,11 +10,10 @@ class PlantAdapter: RecyclerView.Adapter<PlantAdapter.PlantHolder>() {
     val plantList = ArrayList<Plant>()
     class PlantHolder(item: View): RecyclerView.ViewHolder(item) {
         val binding = PlantItemBinding.bind(item)
-        fun bind(plant: Plant) {
-            binding.imageView.setImageResource(plant.imageId)
-            binding.tvTitle.text = plant.title
+        fun bind(plant: Plant) = with(binding){
+            imageView.setImageResource(plant.imageId)
+            tvTitle.text = plant.title
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlantHolder {

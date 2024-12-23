@@ -1,7 +1,10 @@
 package com.example.kotlinintro
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.helper.widget.Grid
 import androidx.core.view.ViewCompat
@@ -12,15 +15,7 @@ import com.example.kotlinintro.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private val adapter = PlantAdapter()
-    private val imageIdList = listOf(
-        R.drawable.img1,
-        R.drawable.img2,
-        R.drawable.img3,
-        R.drawable.img4,
-        R.drawable.img5,
-        R.drawable.img6,
-    )
-    private var index = 0
+    private var editLauncher: ActivityResultLauncher<Intent>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +28,11 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         init()
+        editLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+            if(it.resultCode == RESULT_OK){
+                adapter.addPlant(it.data?.getSerializableExtra("plant") as Plant)
+            }
+        }
     }
 
     private fun init() {
@@ -40,10 +40,7 @@ class MainActivity : AppCompatActivity() {
             binding.recyclerView.layoutManager = GridLayoutManager(this@MainActivity, 3)
             binding.recyclerView.adapter = adapter
             buttonAdd.setOnClickListener {
-                if(index > 5) index = 0
-                val plant = Plant(imageIdList[index], "Plant $index")
-                adapter.addPlant(plant)
-                index++
+                editLauncher?.launch(Intent(this@MainActivity, EditActivity::class.java))
             }
         }
     }
