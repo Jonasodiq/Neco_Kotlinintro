@@ -48,3 +48,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+/*
+* Link -> https://developer.android.com/develop/ui/views/layout/recyclerview?hl=ru
+*
+* */
