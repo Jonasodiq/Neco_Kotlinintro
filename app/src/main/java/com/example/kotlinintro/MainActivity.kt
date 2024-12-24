@@ -62,3 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+/*
+* Link -> https://developer.android.com/develop/ui/views/components/appbar/setting-up?hl=ru
+* */
