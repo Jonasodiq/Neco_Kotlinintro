@@ -1,6 +1,7 @@
 package com.example.kotlinintro
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
@@ -24,6 +25,22 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        binding.nv.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.item1 -> {
+                    Toast.makeText(this, "Item 1", Toast.LENGTH_SHORT).show()
+                }
+                R.id.item2 -> Toast.makeText(this, "Item 2", Toast.LENGTH_SHORT).show()
+                R.id.item3 -> Toast.makeText(this, "Item 3", Toast.LENGTH_SHORT).show()
+                R.id.item4 -> Toast.makeText(this, "Item 4", Toast.LENGTH_SHORT).show()
+                R.id.item11 -> Toast.makeText(this, "Item 11", Toast.LENGTH_SHORT).show()
+                R.id.item22 -> Toast.makeText(this, "Item 22", Toast.LENGTH_SHORT).show()
+                R.id.item33 -> Toast.makeText(this, "Item 33", Toast.LENGTH_SHORT).show()
+                R.id.item44 -> Toast.makeText(this, "Item 44", Toast.LENGTH_SHORT).show()
+            }
+            binding.drawer.closeDrawer(GravityCompat.START)
+            true }
+
         // Öppna navigation drawer när "Open Menu"-knappen klickas
         binding.open.setOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
@@ -41,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 }
 
 /*
-* Link -> https://www.youtube.com/watch?v=InA9RaoKpxM
-* Link -> https://developer.android.com/reference/androidx/drawerlayout/widget/DrawerLayout
+* Link -> https://www.youtube.com/watch?v=xDA9uwY7k0c
+* Link -> https://developer.android.com/reference/com/google/android/material/navigation/NavigationView
 *
 * */
